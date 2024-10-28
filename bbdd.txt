@@ -1,0 +1,25 @@
+CREATE DATABASE if not exists paises;
+USE paises;
+
+CREATE TABLE if not exists paises (
+    country_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    iso_code CHAR(3) NOT NULL,           -- Código ISO de tres letras
+    capital VARCHAR(100),
+    region VARCHAR(100),                 -- Región o continente
+    population BIGINT,                   -- Población total
+    area_km2 FLOAT,                      -- Área en kilómetros cuadrados
+    gdp_per_capita DECIMAL(10, 2),       -- PIB per cápita en USD
+    currency VARCHAR(50)                 -- Moneda oficial
+
+);
+
+INSERT INTO paises (name, iso_code, capital, region, population, area_km2, gdp_per_capita, currency) VALUES
+('España', 'ESP', 'Madrid', 'Europa', 47351567, 505990, 29830.00, 'Euro'),
+('Francia', 'FRA', 'París', 'Europa', 65480710, 551695, 41463.00, 'Euro'),
+('Estados Unidos', 'USA', 'Washington D.C.', 'América del Norte', 331002651, 9833520, 63543.00, 'Dólar estadounidense'),
+('México', 'MEX', 'Ciudad de México', 'América del Norte', 126190788, 1964375, 9764.00, 'Peso mexicano'),
+('Japón', 'JPN', 'Tokio', 'Asia', 125960000, 377975, 43083.00, 'Yen japonés'),
+('Brasil', 'BRA', 'Brasilia', 'América del Sur', 212559417, 8515767, 9024.00, 'Real brasileño'),
+('Australia', 'AUS', 'Canberra', 'Oceanía', 25687041, 7692024, 55058.00, 'Dólar australiano'),
+('India', 'IND', 'Nueva Delhi', 'Asia', 1380004385, 3287263, 2100.00, 'Rupia india');
