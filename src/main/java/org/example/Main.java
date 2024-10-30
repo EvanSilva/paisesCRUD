@@ -30,19 +30,50 @@ public class Main {
                 String currency = resultado.getString(9);
 
                 System.out.println("La información de " + name + " es: \n" +
-                        "id: " + id + "\n" +
-                        "iso: " + iso + "\n" +
-                        "capital: " + capital + "\n" +
-                        "region: " + region + "\n" +
-                        "poblacion: " + population + "\n" +
+                        "Id: " + id + "\n" +
+                        "Iso: " + iso + "\n" +
+                        "Capital: " + capital + "\n" +
+                        "Region: " + region + "\n" +
+                        "Poblacion: " + population + "\n" +
                         "Km2: " + area + "\n" +
                         "GDP: " + gdp + "\n" +
-                        "moneda: " + currency + "\n"
+                        "Moneda: " + currency + "\n"
                 );
 
             }
 
-            conexion.close();
+            /*
+
+            String sqlInsert = "INSERT INTO paises (country_id, name, iso_code, capital, region, population, area_km2, gdp_per_capita, currency) VALUES (?,?,?,?,?,?,?,?,?)";
+
+            PreparedStatement statementInsert = conexion.prepareStatement(sqlInsert);
+
+
+            statementInsert.setInt(1, 9); // country_id
+            statementInsert.setString(2, "Bután"); // name
+            statementInsert.setString(3, "BT"); // iso_code
+            statementInsert.setString(4, "Thimphu"); // capital
+            statementInsert.setString(5, "Asia"); // region
+            statementInsert.setInt(6, 780000); // population
+            statementInsert.setDouble(7, 38394.0); // area_km2
+            statementInsert.setDouble(8, 2.53); // gdp_per_capita
+            statementInsert.setString(9, "ngultrum"); // currency
+
+
+            statementInsert.executeUpdate();
+
+
+             */
+
+
+
+
+
+
+
+
+
+
 
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos.");
