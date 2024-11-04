@@ -1,4 +1,4 @@
-package org.example.pais;
+package org.example.pais.modelo;
 
 public class Pais {
 

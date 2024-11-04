@@ -1,104 +1,20 @@
 package org.example;
 
-import org.example.pais.Pais;
-
-import java.sql.*;
-import java.util.Scanner;
-
-import static org.example.pais.toolsCRUD.*;
+import static org.example.pais.modelo.toolsCRUD.*;
+import static org.example.pais.vista.MethodCalls.executeBody;
 
 public class Main {
 
-    public static Connection conexion;
-
-    static {
-        try {
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/paises", "root", "root");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static void main(String[] args) {
 
-        try {
+        startConection();
 
-            Scanner scanner = new Scanner(System.in);
+        executeBody();
 
-            System.out.print("Qué tipo de operacion quieres hacer: [Consultar] [Añadir] [Actualizar] [Eliminar]");
 
-            String operacion = scanner.nextLine();
+    }
 
-            switch (operacion.toLowerCase()) {
-                case "consultar":
-                    System.out.println("Has seleccionado la operación de consulta.");
-                    showPaises();
-                    break;
 
-                case "añadir":
-
-                    System.out.println("Has seleccionado la operación de añadir.\n");
-
-                    System.out.println("Dajme el ID\n");
-                    int idNew = scanner.nextInt();
-
-                    System.out.println("Dajme el Nombre\n");
-                    String nameNew = scanner.nextLine();
-
-                    System.out.println("Dajme el ISO\n");
-                    String isoNew = scanner.nextLine();
-
-                    System.out.println("Dajme el nombre de la Capital\n");
-                    String capitalNew = scanner.nextLine();
-
-                    System.out.println("Dajme el Nombre de la Región\n");
-                    String regionNew = scanner.nextLine();
-
-                    System.out.println("Dajme el Nombre de la Región\n");
-                    int poblacionNew = scanner.nextInt();
-
-                    System.out.println("Dajme el Nombre de la Area que ocupa en Km2\n");
-                    int areaNew = scanner.nextInt();
-
-                    System.out.println("Dajme el Nombre de la Región\n");
-                    int gdpNew = scanner.nextInt();
-
-                    System.out.println("Dajme el Nombre de la Región\n");
-                    String monedaNew = scanner.nextLine();
-
-                    Pais newPais = new Pais(idNew, nameNew, isoNew, capitalNew, regionNew, poblacionNew, areaNew, gdpNew, monedaNew  );
-
-                    insertPais(newPais);
-
-                    break;
-
-                case "actualizar":
-                    System.out.println("Has seleccionado la operación de actualización.");
-
-                    System.out.println("Dajme el ID del pais para actualizar la poblacion\n");
-                    int paisUpdate = scanner.nextInt();
-
-                    System.out.println("Dame el valor de la nueva pobñacion\n");
-                    int poblacionUpdate = scanner.nextInt();
-
-                    updatePaisPopulation(poblacionUpdate, paisUpdate);
-
-                    break;
-
-                case "eliminar":
-                    System.out.println("Has seleccionado la operación de eliminación.");
-
-                    System.out.println("Dajme el ID del pais para actualizar la poblacion\n");
-                    int paisDelete = scanner.nextInt();
-
-                    deletePais(paisDelete);
-
-                    break;
-
-                default:
-                    System.out.println("Operación no válida. Por favor, selecciona una opción válida.");
-                    break;
-            }
 
 
             /*
@@ -188,10 +104,4 @@ public class Main {
              */
 
 
-        } catch (SQLException e) {
-            System.out.println("Error al conectar con la base de datos.");
-            e.printStackTrace();
-        }
-
-    }
 }

@@ -1,13 +1,21 @@
-package org.example.pais;
+package org.example.pais.modelo;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import static org.example.Main.conexion;
+import java.sql.*;
 
 public class toolsCRUD {
+
+
+    public static Connection conexion;
+
+    public static void startConection() {
+
+        try {
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/paises", "root", "root");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static void showPaises() throws SQLException {
 
@@ -26,15 +34,15 @@ public class toolsCRUD {
             String gdp = resultado.getString(8);
             String currency = resultado.getString(9);
 
-            System.out.println("La información de " + name + " es: \n" +
-                    "Id: " + id + "\n" +
-                    "Iso: " + iso + "\n" +
-                    "Capital: " + capital + "\n" +
-                    "Region: " + region + "\n" +
-                    "Poblacion: " + population + "\n" +
-                    "Km2: " + area + "\n" +
-                    "GDP: " + gdp + "\n" +
-                    "Moneda: " + currency + "\n"
+            System.out.println("La información de " + name + " es: \n\n" +
+                    "\t Id: " + id + "\n" +
+                    "\t Iso: " + iso + "\n" +
+                    "\t Capital: " + capital + "\n" +
+                    "\t Region: " + region + "\n" +
+                    "\t Poblacion: " + population + "\n" +
+                    "\t Km2: " + area + "\n" +
+                    "\t GDP: " + gdp + "\n" +
+                    "\t Moneda: " + currency + "\n \n"
             );
 
         }
